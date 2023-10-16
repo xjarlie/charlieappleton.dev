@@ -20,6 +20,12 @@
     src: local('Trebuchet MS Italic'), url('/fonts/Trebuchet-MS-Italic.woff') format('woff');
 }
 
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 500;
+    src: local('Noto Sans'), url('/fonts/NotoSans-Medium.ttf') format('truetype');
+}
+
 html,
 body {
     width: 100%;
@@ -77,29 +83,39 @@ span.appleton {
 }
 
 div.content {
-    margin: 15px auto;
+    margin: 15px 0px;
 
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    width: 70%;
+    flex-wrap: nowrap;
+    width: 100%;
 
     justify-content: center;
     align-items: center;
+
+    max-height: 50svh;
+
 }
 
-div.content .card {
-    
-
-    
+div.content .card {    
     margin: 5px;
     position: relative;
-    width: 40%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+
+    max-width: 400px;
+
+    margin: 25px;
 }
 
 div.content .card-title {
-    
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 12px;
+    margin: 5px 0;
 }
 
 div.content .card-content {
@@ -108,6 +124,11 @@ div.content .card-content {
     border: 1px solid rgba(255, 255, 255, 0.01);
     padding: 15px;
     height: 80%;
+    width: 100%;
+
+    font-family: 'Noto Sans', serif;
+    font-weight: 500;
+
 }
 
 div.projects {
@@ -119,7 +140,38 @@ div.about-me {
 }
 
 ul.project-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.project-list li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+ul.project-list li .text {
+    display: flex;
+    flex-direction: column;
+}
+
+ul.project-list li .text .project-title {
+    font-weight: 500;
+}
+
+ul.project-list li .text .project-desc {
+    font-weight: 700;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+
+    display: block;
+
+    width: 95%;
     
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 div.links {
