@@ -26,11 +26,18 @@
     src: local('Noto Sans'), url('/fonts/NotoSans-Medium.ttf') format('truetype');
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+} 
+
 html,
 body {
     width: 100%;
     height: 100%;
     margin: 0;
+
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -41,7 +48,6 @@ body {
 
 div.container {
     width: 100%;
-    height: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -66,6 +72,7 @@ span.charlie {
     font-weight: 700;
     line-height: normal;
     letter-spacing: 4.8px;
+
 }
 
 span.appleton {
@@ -82,100 +89,151 @@ span.appleton {
     margin-bottom: 15px;
 }
 
+.small-divider {
+    flex-shrink: 0;
+}
+
 div.content {
-    margin: 15px 0px;
+    margin: 30px 0px;
 
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 100%;
+    width: 80%;
+    max-width: 1000px;
 
     justify-content: center;
-    align-items: center;
 
-    max-height: 50svh;
+
+    /* height: 50%; */
+    /* max-height: 400px; */
+    min-height: min-content;
+
+    /* flex-shrink: 2; */
+    flex-wrap: wrap;
 
 }
 
-div.content .card {    
-    margin: 5px;
-    position: relative;
-    height: 100%;
+div.wing {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin: 0 20px;
+    padding: 0;
+
+    min-width: 300px;
+}
+
+div.card {
+    --border-color: #FFF;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
 
-    max-width: 400px;
-
-    margin: 25px;
+    height: min-content;
 }
 
-div.content .card-title {
+span.card-title {
     font-weight: 600;
     font-size: 24px;
     letter-spacing: 12px;
-    margin: 5px 0;
+    margin: 0 0 10px 0;
 }
 
-div.content .card-content {
+div.card-content {
     box-shadow: 0px 0px 3px 2px var(--border-color), 0px 0px 0px 0px var(--border-color) inset;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.01);
-    padding: 15px;
-    height: 80%;
+
+    padding: 10px;
     width: 100%;
 
-    font-family: 'Noto Sans', serif;
-    font-weight: 500;
-
+    font-family: 'Noto Sans', sans-serif;
 }
 
-div.projects {
-    --border-color: #FFF;
-}
-
-div.about-me {
-    --border-color: #F7A8B8;
-}
-
-div.toolkit {
-    --border-color: #55CDFC;
-}
-
-ul.project-list {
+div.projects .project-list {
     list-style-type: none;
-    margin: 0;
     padding: 0;
-}
+    margin: 0;
 
-ul.project-list li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-ul.project-list li .text {
     display: flex;
     flex-direction: column;
+
+    width: 100%;
 }
 
-ul.project-list li .text .project-title {
+div.projects .project-list>* {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    margin: 5px 0px;
+    color: white;
+
+}
+
+div.projects .project-list .text:hover {
+    cursor: pointer;
+}
+
+div.projects .project-list .text:hover .project-title {
+    text-decoration: underline;
+}
+
+div.projects .project-list .text {
+    display: flex;
+    flex-direction: column;
+
+    text-decoration: none;
+    color: white;
+}
+
+div.projects .project-list .text .project-title {
     font-weight: 500;
 }
 
-ul.project-list li .text .project-desc {
-    font-weight: 700;
+div.projects .project-list .text .project-desc {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.65);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
 
-    display: block;
+div.projects .project-list .icons {
+    width: 40px;
+}
 
-    width: 95%;
-    
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+div.card.toolkit {
+    --border-color: #55CDFC;
+
+}
+
+div.toolkit .card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    flex-wrap: wrap;
+}
+
+div.toolkit .card-content .tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 4px 7px;
+
+}
+
+div.card.about-me {
+    --border-color: #F7A8B8;
+
+    margin-top: 20px;
 }
 
 div.links {
@@ -188,4 +246,32 @@ div.links {
 
 div.links a {
     margin: 0 10px;
+}
+
+@media screen and (max-width: 1536px) {
+    div.content {
+        /* width: 80%; */
+    }
+}
+
+@media screen and (max-width: 849px) {
+    div.card {
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 567px) {
+    div.content {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 422px) {
+    div.content {
+        width: 95%;
+    }
+
+    div.name {
+        transform: scale(80%);
+    }
 }
