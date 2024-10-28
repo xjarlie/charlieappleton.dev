@@ -158,6 +158,18 @@ div.card-content {
     font-family: 'Noto Sans', sans-serif;
 }
 
+div.card-content a:visited {
+    color: white
+}
+
+div.card-content a:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+div.card.projects {
+    margin-top: 20px;
+}
+
 div.projects .project-list {
     list-style-type: none;
     padding: 0;
